@@ -1,0 +1,26 @@
+#** ------------------------------------------------------------------------ **#
+#** :File:     TemplateClass.vtl                                             **#
+#** :Author:   Nathan E White, PhD                                           **#
+#** :Created:  2022-11-20                                                    **#
+#**                                                                          **#
+#** :Description: This is a template for a template class.                   **#
+#**                                                                          **#
+#** :Modified: 2022-11-20                                                    **#
+#** ------------------------------------------------------------------------ **#
+/* :File Header:  */
+#parse("TCC-File-Header.vtl")
+
+/* :BOF:  */
+/* :Include Guard:  */
+#ifndef ${1:NAME}_${2:NAME}_${3:EXT}
+#define ${1:NAME}_${2:NAME}_${3:EXT}
+/* :Include Guard:  */
+
+#for($i = 1; $i <= $4; $i++)
+#[[#include]] <${5:header}>
+#end
+
+/* :Include Guard:  */
+#endif
+/* :Include Guard:  */
+/* :EOF: */

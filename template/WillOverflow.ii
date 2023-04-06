@@ -1,0 +1,15 @@
+
+#include "WillOverflow.inl"
+
+template <typename N>
+static constexpr inline auto will_overflow = [] (N lhs, N rhs) -> bool {
+    return (std::numeric_limits< decltype (lhs) >::max () - lhs) < rhs;
+};
+
+template <typename N> requires std::is_arithmetic_v< N >
+constinit std::function<bool(N,N)> AdditionOverflowQ = will_overflow< N >;
+
+template <typename N> requires std::is_arithmetic_v< N >
+constinit std::function<bool(N,N)> AdditionNoOverflowQ = [] (N lhs, N rhs) -> bool {
+    return (std::numeric_limits< decltype (lhs) >::max () - lhs) >= rhs;
+};
